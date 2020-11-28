@@ -1,0 +1,17 @@
+click==7.1.2
+dnspython==1.16.0
+eventlet==0.29.1
+Flask==1.1.2
+Flask-SocketIO==4.3.1
+gevent==20.9.0
+greenlet==0.4.17
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+python-engineio==3.13.2
+python-socketio==4.6.0
+shelljob==0.6.2
+six==1.15.0
+Werkzeug==1.0.1
+zope.event==4.5.0
+zope.interface==5.2.0
