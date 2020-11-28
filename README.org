@@ -1,0 +1,21 @@
+* Introduction
+
+This is a POC playground for this [[https://github.com/genenetwork/genenetwork2/pull/486][PR]] in a bid to understand and hack around with websockets.
+
+*** Setup
+First create a virtualenv and activate it
+
+: virtualenv venv && source venv/bin/activate
+
+Install the deps
+
+: pip install -r requirements.txt
+
+Run the app:
+
+: env FLASK_APP=run.py FLASK_DEBUG=1 flask run
+
+*** Notes
+
+You can use a queue say Redis to read in events(useful for Sheepdog);
+this remains explored for now.
