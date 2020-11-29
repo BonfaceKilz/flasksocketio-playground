@@ -8,7 +8,7 @@ $(document).ready(function(){
     socket.emit('gemma');
 
     socket.on('console-log', function(msg) {
-        console.log("Received message: " + msg.data);
-        term.write(msg.data);
+        console.log("Received message: " + msg.data.replace(/\n/g, "\n\r"));
+        term.write(msg.data.replace(/\n/g, "\n\r"));
     });
 });
