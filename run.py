@@ -15,19 +15,21 @@ socketio = SocketIO(app)
 
 def background_thread(socket_obj):
     def run_process(cmd):
-        process = iter(subprocess.Popen(
+        socket_obj.emit('console-log',
+                        {'data': f"{cmd}\n"})
+        process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            shell=True).stdout.readline, b'')
-        for line in process:
+            shell=True)
+        for c in iter(lambda: process.stdout.read(1), b''):
             socket_obj.emit('console-log',
-                            {'data': line.decode('iso8859-1')})
+                            {'data': c.decode('utf-8')})
             socket_obj.sleep(0.01)
         socket_obj.emit("console-log",
                         {'data': "DONE"})
     gevent.joinall(
-        [gevent.spawn(run_process, "bash /tmp/progress.sh ")])
+        [gevent.spawn(run_process, "guix pull --dry-run")])
 
 
 @socketio.on('gemma')
